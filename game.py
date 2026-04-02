@@ -37,6 +37,9 @@ def move(direction,map_data,size_x,size_y):
 
 def drop_ball(map_data,size_x,size_y):
      x_cord = random.randint(0,size_x)
+
+     #alapvetoen szeretnem ugy megcsinalni, hogy folyamatosan esnek a labdak es a chatgpt-vel otleteltem,
+     #hogyan lehetne ugy megcsinalni, hogy ne bugoljon szet a console es azt irta a threading modulelal megtudom oldani
      
      
 
