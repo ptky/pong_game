@@ -33,9 +33,6 @@ def move(direction,map_data,size_x,size_y):
      map_data = render_pointer(map_data, size_x, size_y)
      render_map(map_data, size_x, size_y)
 
-
-
-
 data, size_x, size_y = map_generate(15, 5)
 pointer = render_pointer(data, size_x, size_y)
 render_map(pointer, size_x, size_y)
@@ -44,8 +41,10 @@ def on_press(key):
     try:
         if key.char == "a":
              move(direction=1, map_data=pointer, size_x=size_x, size_y=size_y)
+             print("Points: 0")
         elif key.char == "d":
             move(direction=2, map_data=pointer, size_x=size_x, size_y=size_y)
+            print("Points: 0")
     except AttributeError:
         pass 
 
