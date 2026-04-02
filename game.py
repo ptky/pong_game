@@ -1,7 +1,9 @@
 from pynput import keyboard
 import os
 import time
+import threading,random
 pointer_index = 0
+
 def map_generate(size_x,size_y):
      map_data = {}
      for i in range(1,size_x*size_y+1):
@@ -33,9 +35,17 @@ def move(direction,map_data,size_x,size_y):
      map_data = render_pointer(map_data, size_x, size_y)
      render_map(map_data, size_x, size_y)
 
+def drop_ball(map_data,size_x,size_y):
+     x_cord = random.randint(0,size_x)
+     
+     
+
 data, size_x, size_y = map_generate(15, 5)
 pointer = render_pointer(data, size_x, size_y)
 render_map(pointer, size_x, size_y)
+ball_thread = threading.Thread(target=drop_ball, args=(pointer, size_x, size_y))
+ball_thread.daemon = True 
+ball_thread.start()
 
 def on_press(key):
     try:
