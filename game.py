@@ -1,7 +1,7 @@
 from pynput import keyboard
 import os
 import time
-import threading,random
+import random
 pointer_index = 0
 ball_index = 0
 points = 0
@@ -12,7 +12,7 @@ game_over = False
 
 def clear(mode):
      if mode == 1:
-          lambda: os.system('cls')
+          os.system('cls' if os.name=='nt' else 'clear')
      elif mode == 2:
           os.system("clear")
      else:
