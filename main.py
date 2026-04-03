@@ -10,7 +10,7 @@ MAP_WIDTH = int(config["GAME"]["MAP_WIDTH"])
 MAP_HEIGHT = int(config["GAME"]["MAP_HEIGHT"])
 BALL_SPEED = float(config["GAME"]["BALL_SPEED"])
 
-data, size_x, size_y = game.map_generate(15, 5)
+data, size_x, size_y = game.map_generate(MAP_WIDTH, MAP_HEIGHT)
 pointer = game.render_pointer(data, size_x, size_y)
 
 game.render_map(pointer, size_x, size_y)
