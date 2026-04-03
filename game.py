@@ -9,7 +9,17 @@ lives = 3
 run = True
 game_over = False
 
-clear = lambda: os.system('cls')
+
+def clear(mode):
+     if mode == 1:
+          lambda: os.system('cls')
+     elif mode == 2:
+          os.system("clear")
+     else:
+          run = False
+          print("Config error. Check config.ini file")
+          exit(0)
+
 def map_generate(size_x,size_y):
      map_data = {}
      for i in range(1,size_x*size_y+1):
@@ -30,7 +40,7 @@ def render_pointer(map_data,size_x,size_y):
      return map_data
 
 
-def move(direction,map_data,size_x,size_y):
+def move(direction,map_data,size_x,size_y,mode):
      global pointer_index
      #if you are on windows you need this: clear()
      #if you are using mac os you need this: os.system("clear")
@@ -40,7 +50,7 @@ def move(direction,map_data,size_x,size_y):
      elif direction == 2 and pointer_index < (size_x//2):
           pointer_index+=1
      map_data = render_pointer(map_data, size_x, size_y)
-     clear()
+     clear(mode=mode)
      render_map(map_data, size_x, size_y)
 
 def delete_old_ball(map_data,size_x,size_y):
@@ -48,7 +58,7 @@ def delete_old_ball(map_data,size_x,size_y):
             if map_data[i] == "O":
                 map_data[i] = " "
 
-def drop_ball(map_data,size_x,size_y,speed):
+def drop_ball(map_data,size_x,size_y,speed,mode):
      global ball_index
      global points
      global lives
@@ -60,7 +70,7 @@ def drop_ball(map_data,size_x,size_y,speed):
           if lives == 0 and not game_over:
                game_over = True
                keyboard_glitch = input("Press enter! ")
-               clear()
+               clear(mode=mode)
                print("Game Over!\n")
                print(f"Your total score: {points}")
                qstn = int(input("Wanna retry? (1 = Yes, 2 = No): "))
@@ -94,7 +104,7 @@ def drop_ball(map_data,size_x,size_y,speed):
 
           map_data[index] = "O"
 
-          clear()
+          clear(mode=mode)
           render_map(map_data, size_x, size_y)
           print(f"Points: {points}")
           print(f"Lives left: {lives}")
@@ -104,17 +114,17 @@ def drop_ball(map_data,size_x,size_y,speed):
      #alapvetoen szeretnem ugy megcsinalni, hogy folyamatosan esnek a labdak es a chatgpt-vel otleteltem,
      #hogyan lehetne ugy megcsinalni, hogy ne bugoljon szet a console es azt irta a threading modulelal megtudom oldani
 
-def on_press(key,pointer,size_x,size_y):
+def on_press(key,pointer,size_x,size_y,mode):
     global points,lives
     if game_over:
          return
     try:
         if key.char == "a":
-             move(direction=1, map_data=pointer, size_x=size_x, size_y=size_y)
+             move(direction=1, map_data=pointer, size_x=size_x, size_y=size_y,mode=mode)
              print(f"Points: {points}")
              print(f"Lives left: {lives}")
         elif key.char == "d":
-            move(direction=2, map_data=pointer, size_x=size_x, size_y=size_y)
+            move(direction=2, map_data=pointer, size_x=size_x, size_y=size_y,mode=mode)
             print(f"Points: {points}")
             print(f"Lives left: {lives}")
     except AttributeError:
