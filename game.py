@@ -59,6 +59,7 @@ def drop_ball(map_data,size_x,size_y,speed):
      while run:
           if lives == 0 and not game_over:
                game_over = True
+               keyboard_glitch = input("Press enter! ")
                clear()
                print("Game Over!\n")
                print(f"Your total score: {points}")
@@ -71,7 +72,7 @@ def drop_ball(map_data,size_x,size_y,speed):
                     continue
                elif qstn == 2:
                     run = False
-                    break
+                    exit(0)
                     
                     
 
