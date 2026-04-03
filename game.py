@@ -46,7 +46,7 @@ def delete_old_ball(map_data,size_x,size_y):
             if map_data[i] == "O":
                 map_data[i] = " "
 
-def drop_ball(map_data,size_x,size_y):
+def drop_ball(map_data,size_x,size_y,speed):
      global ball_index
      global points
      global lives
@@ -93,7 +93,7 @@ def drop_ball(map_data,size_x,size_y):
           print(f"Points: {points}")
           print(f"Lives left: {lives}")
 
-          time.sleep(0.3)
+          time.sleep(speed)
 
      #alapvetoen szeretnem ugy megcsinalni, hogy folyamatosan esnek a labdak es a chatgpt-vel otleteltem,
      #hogyan lehetne ugy megcsinalni, hogy ne bugoljon szet a console es azt irta a threading modulelal megtudom oldani
