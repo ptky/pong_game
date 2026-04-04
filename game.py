@@ -30,7 +30,7 @@ def render_map(map_data,size_x):
           x = (i-1) % size_x
           
           if x == 0 or x == (size_x - 1):
-               data = "#"
+               data = "┃"
           else:
                data = map_data[i]
           if i % size_x == 0:
